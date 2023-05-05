@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Résultats</title>
+</head>
+<body>
+	<h1>Résultats</h1>
+	<p>Vous avez répondu correctement à <?php echo $nbCorrect; ?> question(s) sur 10.</p>
+	<p>Voici vos réponses:</p>
+	<ol>
+		<?php foreach($resultats as $resultat): ?>
+			<li>
+				<?php echo $resultat->getQuestion()->getLibelle(); ?> :
+				<?php echo $resultat->getReponse()->getLibelle(); ?>
+				<?php if($resultat->isCorrect()): ?>
+					<span style="color: green">Correct</span>
+				<?php else: ?>
+					<span style="color: red">Incorrect</span>
+				<?php endif; ?>
+			</li>
+		<?php endforeach; ?>
+	</ol>
+	<form method="post" action="index.php?route=accueil">
+		<button type="submit">Accueil</button>
+	</form>
+</body>
+</html>
